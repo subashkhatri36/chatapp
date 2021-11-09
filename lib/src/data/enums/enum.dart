@@ -1,0 +1,1 @@
+enum DataPass { gridview, listview }

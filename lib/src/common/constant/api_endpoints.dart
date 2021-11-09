@@ -1,0 +1,2 @@
+/// api endpoints
+class ApiEndPoints {}
