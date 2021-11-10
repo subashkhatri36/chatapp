@@ -1,3 +1,4 @@
+import 'package:chatdemoapp/src/core/controllers/home_page_controller.dart';
 import 'package:chatdemoapp/src/modules/home/home_screen_page.dart';
 import 'package:chatdemoapp/src/modules/splash/widget/base_splash.dart';
 import 'package:chatdemoapp/src/utils/helpers/size_config.dart';
@@ -18,6 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    homeController.loadOfflineDatabase();
     Future.delayed(duration.seconds, getNextPage);
   }
 

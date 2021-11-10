@@ -18,9 +18,6 @@ class SizeConfig {
     } else {
       isdesktop = false;
     }
-
-    print("Height : " + screenHeight.toString());
-    print("Width :" + screenWidth.toString());
   }
 }
 

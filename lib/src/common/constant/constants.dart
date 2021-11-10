@@ -31,3 +31,9 @@ const Color kIndicatorColor2 = Color(0xFF65C7F7);
 const Color kIndicatorColor3 = Color(0xFF0052D4);
 
 const Color kChatButtonColor = Color(0xFFBDBDBD);
+const Color kSearch = Color(0xFFF4F7FE);
+const Color ksearchText = Color(0xFFA3AED0);
+
+const Color kSubtitleColor = Color(0xFF909093);
+
+const Color kInputOptionButtonColor = Color(0xFF5E5E5E);

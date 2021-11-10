@@ -1,15 +1,12 @@
 import 'package:chatdemoapp/src/common/constant/constants.dart';
 import 'package:chatdemoapp/src/core/controllers/home_page_controller.dart';
-import 'package:chatdemoapp/src/data/enums/enum.dart';
 import 'package:chatdemoapp/src/data/model/user_model.dart';
 import 'package:chatdemoapp/src/modules/chat/chat_screen_page.dart';
 import 'package:chatdemoapp/src/utils/helpers/date_utils.dart';
-import 'package:chatdemoapp/src/utils/helpers/size_config.dart';
 import 'package:chatdemoapp/src/widgets/input_fields/input_field.dart';
 import 'package:chatdemoapp/src/widgets/size/height_width.dart';
 import 'package:chatdemoapp/src/widgets/texts/normal_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class HomeDashBoardWidget extends StatefulWidget {
@@ -32,9 +29,17 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
           InputField(
             controller: homeController.searchTextController,
             hintText: "Chercher un coachs",
-            icon: const Icon(Icons.search),
-            suffix: const RotatedBox(quarterTurns: 3, child: Icon(Icons.tune)),
-            backgroundColor: kLightGreyColor,
+            icon: const Icon(
+              Icons.search,
+              color: kPrimaryColor,
+            ),
+            suffix: const RotatedBox(
+                quarterTurns: 3,
+                child: Icon(
+                  Icons.tune,
+                  color: kPrimaryColor,
+                )),
+            backgroundColor: kSearch,
           ),
           Expanded(
             child: Obx(
@@ -68,7 +73,6 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                               UserModel data = d.value;
                               return InkWell(
                                   onTap: () {
-                                    print(d.key);
                                     homeController.modelIndex = d.key;
                                     homeController.isChatPage.value = true;
                                     Get.to(() => ChatPage(),
@@ -79,7 +83,7 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                                     child: Column(
                                       children: [
                                         CircleAvatar(
-                                            radius: 25,
+                                            radius: 38,
                                             backgroundImage:
                                                 AssetImage(data.profile)),
                                         const HeightWidget(.01),
@@ -108,7 +112,7 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                                             Flexible(
                                                 child: NormalText(
                                               data.name,
-                                              fontSize: 14,
+                                              fontSize: 13,
                                             )),
                                           ],
                                         ),
@@ -131,6 +135,7 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                                     Get.to(() => ChatPage(), arguments: um);
                                   },
                                   leading: CircleAvatar(
+                                    radius: 38,
                                     backgroundImage: AssetImage(um.profile),
                                   ),
                                   title: Row(
@@ -145,8 +150,8 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                                         formatDate(
                                           um.msgTime,
                                         ),
-                                        color: kGreyColor,
-                                        fontSize: 14,
+                                        color: kSubtitleColor,
+                                        fontSize: 15,
                                       ),
                                       const Icon(
                                         Icons.arrow_forward_ios,
@@ -160,10 +165,12 @@ class _HomeDashBoardWidgetState extends State<HomeDashBoardWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      const HeightWidget(.001),
                                       NormalText(
                                         um.lastmessage,
-                                        color: kGreyColor,
+                                        color: kSubtitleColor,
                                         maxline: 2,
+                                        fontSize: 15,
                                       ),
                                       const Divider(
                                         color: kLightGreyColor,

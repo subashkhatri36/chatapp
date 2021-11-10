@@ -89,6 +89,8 @@ class _InputFieldState extends State<InputField> {
         autovalidateMode: widget.autovalidateMode,
         maxLines: widget.maxline,
         decoration: InputDecoration(
+          hintStyle:
+              const TextStyle(color: ksearchText, fontWeight: FontWeight.bold),
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,

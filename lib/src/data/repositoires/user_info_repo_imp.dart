@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:chatdemoapp/src/core/controllers/home_page_controller.dart';
-import 'package:get/get.dart';
 import 'package:chatdemoapp/src/core/repositories/user_information_repo.dart';
 import 'package:chatdemoapp/src/data/model/user_model.dart';
 import 'package:chatdemoapp/src/utils/storage/shared_preference.dart';

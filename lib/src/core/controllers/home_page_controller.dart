@@ -1,10 +1,8 @@
 import 'package:chatdemoapp/src/common/constant/images_assets.dart';
 import 'package:chatdemoapp/src/core/repositories/user_information_repo.dart';
 import 'package:chatdemoapp/src/data/model/message_model.dart';
-import 'package:chatdemoapp/src/data/model/reaction_model.dart';
 import 'package:chatdemoapp/src/data/model/user_model.dart';
 import 'package:chatdemoapp/src/utils/helpers/snackbar_helper.dart';
-import 'package:chatdemoapp/src/utils/storage/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
@@ -30,6 +28,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   RxList<UserModel> userModelList = List<UserModel>.empty(growable: true).obs;
   RxList<UserModel> userMessageList = List<UserModel>.empty(growable: true).obs;
 
+  ScrollController scrollController = ScrollController();
+
+//dummy data in case there is no data
   List<UserModel> dummydata = [
     UserModel(
         id: 1,
@@ -443,6 +444,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     tabController = TabController(length: 2, vsync: this);
   }
 
+//submitting data to the database
   void submitdata(UserModel usermodel) {
     isloadingUserData.value = false;
     if (chatInputController.text.isNotEmpty) {
@@ -456,7 +458,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
         senderId: usermodel.id,
         seen: true,
       );
-      print(modelIndex);
       usermodel.lastmessage = chatInputController.text;
       usermodel.message!.add(msg);
       userModelList[modelIndex] = usermodel;
@@ -473,7 +474,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   loadOfflineDatabase() async {
     //print('starting fetching database');
     isloadingUserData.value = false;
-
+    //list of user
     List<UserModel> user = [];
     user = await userRepo.getAllUser();
 
